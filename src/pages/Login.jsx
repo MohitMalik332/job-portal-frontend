@@ -1,8 +1,29 @@
 import { useState } from "react";
+import API from "../services/api";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+  const handleLogin = async () => {
+    try{
+      const response = await API.post("/api/auth/login", {
+        email,
+        password,
+      });
+
+      console.log(response.data);
+
+      //Store JWT Token
+      localStorage.setItem("token", response.data.token);
+
+      alert("Login Successful...");
+    } catch (err){
+      console.error(err);
+      alert("Login Failed...");
+    }
+  }
 
 
   return (
@@ -32,7 +53,10 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)} 
         />
 
-        <button className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300">
+        <button 
+          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300"
+          onClick={handleLogin}
+        >
           Login
         </button>
 

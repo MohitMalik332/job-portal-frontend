@@ -1,8 +1,31 @@
 import { useState } from "react";
+import API from "../services/api";
 
 
 function Register() {
   const [role, setRole] = useState("ROLE_USER");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleRegister = async () => {
+    try {
+      const response = await API.post("/auth/register", {
+        fullName,
+        email,
+        password,
+      });
+
+      alert("Registration Successful");
+
+      // Redirect to login
+      window.location.href = "/";
+    } catch (err){
+      console.error(err);
+      alert("Registration Failed...");
+    }
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-pink-500">
@@ -38,21 +61,30 @@ function Register() {
           type="text"
           placeholder="Full Name"
           className="w-full mb-4 p-3 border rounded-lg"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
         />
 
         <input
           type="email"
           placeholder="Email"
           className="w-full mb-4 p-3 border rounded-lg"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
           placeholder="Password"
           className="w-full mb-4 p-3 border rounded-lg"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="w-full bg-purple-500 text-white p-3 rounded-lg hover:bg-purple-600 transition">
+        <button 
+          className="w-full bg-purple-500 text-white p-3 rounded-lg hover:bg-purple-600 transition"
+          onClick={handleRegister}
+        >
           Register
         </button>
 
