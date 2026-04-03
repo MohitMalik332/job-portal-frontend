@@ -8,17 +8,23 @@ function Login() {
 
   const handleLogin = async () => {
     try{
-      const response = await API.post("/api/auth/login", {
+      const response = await API.post("/auth/login", {
         email,
         password,
       });
 
-      console.log(response.data);
-
-      //Store JWT Token
+      // Store JWT and role the redirect based on Role
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
 
-      alert("Login Successful...");
+      alert("Login Successful");
+
+      if (response.data.role === "ROLE_RECRUITER"){
+        window.location.href = "/recruiter";
+      } else {
+        window.location.href = "/jobs"
+      }
+      
     } catch (err){
       console.error(err);
       alert("Login Failed...");

@@ -15,6 +15,7 @@ function Register() {
         fullName,
         email,
         password,
+        role,
       });
 
       alert("Registration Successful");
