@@ -4,9 +4,11 @@ import API from "../services/api";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const [appliedJobs, setAppliedJobs] = useState([]);
 
   useEffect(() => {
     fetchJobs();
+    fetchAppliedJobs();
   }, [])
 
   const fetchJobs = async () => {
@@ -24,9 +26,25 @@ function Jobs() {
       await API.post(`/applications/apply/${jobId}`);
       alert("Applied Successfully...");
 
+      // Update UI instantly
+      setAppliedJobs([...appliedJobs, jobId]);
+
     } catch(err){
       console.error(err);
-      alert("Already applied or Error...");
+      alert("Error applying!");
+    }
+  }
+
+  const fetchAppliedJobs = async () => {
+    try{
+      const response = API.get("/applications/my");
+
+      // Extracting Job ID's to check which jobs user has already applied.
+      const appliedJobsIds = response.data.map(app => app.job.id);
+      setAppliedJobs(appliedJobsIds);
+
+    } catch (err){
+      console.error(err);
     }
   }
 
@@ -51,9 +69,14 @@ function Jobs() {
 
               <button
                 onClick={() => applyJob(job.id)}
-                className="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+                disabled={appliedJobs.includes(job.id)}
+                className={`mt-4 w-full p-2 rounded-lg ${
+                  appliedJobs.includes(job.id)
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-500 hover:bg-blue-600 text-white"
+                }`}
               >
-                Apply
+                {appliedJobs.includes(job.id) ? "Already Applied" : "Apply"}
               </button>
             </div>
           ))
