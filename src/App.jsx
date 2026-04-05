@@ -4,6 +4,7 @@ import './App.css'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Jobs from './pages/Jobs'
+import Recruiter from './pages/Recruiter'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='jobs' element={<Jobs />}/>
+        <Route path='/recruiter' element={<Recruiter />} />
       </Routes>
     </BrowserRouter>
   )
