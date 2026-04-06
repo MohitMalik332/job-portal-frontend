@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 
 function Jobs() {
+  const navigate = useNavigate();
+
   const [jobs, setJobs] = useState([]);
   const [appliedJobs, setAppliedJobs] = useState([]);
 
@@ -53,6 +56,9 @@ function Jobs() {
       <h1 className="text-3xl font-bold mb-6 text-center">
         Available Jobs
       </h1>
+      <button onClick={() => navigate("/my-applications")}>
+        My Applications
+      </button>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {

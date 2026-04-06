@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Jobs from './pages/Jobs'
 import Recruiter from './pages/Recruiter'
+import MyApplications from './pages/MyApplications'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='jobs' element={<Jobs />}/>
         <Route path='/recruiter' element={<Recruiter />} />
+        <Route path='/my-applications' element={<MyApplications />} />
       </Routes>
     </BrowserRouter>
   )
