@@ -8,6 +8,7 @@ import RecruiterDashboard from './pages/RecruiterDashboard'
 import MyApplications from './pages/MyApplications'
 import Navbar from './components/Navbar'
 import PostJob from './pages/PostJob'
+import RecruiterJobs from './pages/RecruiterJobs'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/recruiter' element={<RecruiterDashboard />} />
         <Route path='/my-applications' element={<MyApplications />} />
         <Route path='post-job' element={<PostJob />} />
+        <Route path='/recruiter/jobs' element={<RecruiterJobs />} />
       </Routes>
     </BrowserRouter>
     </>
