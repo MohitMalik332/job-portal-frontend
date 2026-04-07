@@ -6,11 +6,14 @@ import Register from './pages/Register'
 import Jobs from './pages/Jobs'
 import Recruiter from './pages/Recruiter'
 import MyApplications from './pages/MyApplications'
+import Navbar from './components/Navbar'
 
 function App() {
 
   return (
-    <BrowserRouter>
+    <>
+      <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
@@ -19,6 +22,7 @@ function App() {
         <Route path='/my-applications' element={<MyApplications />} />
       </Routes>
     </BrowserRouter>
+    </>
   )
 }
 
