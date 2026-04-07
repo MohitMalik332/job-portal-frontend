@@ -40,7 +40,7 @@ function Jobs() {
 
   const fetchAppliedJobs = async () => {
     try{
-      const response = API.get("/applications/my");
+      const response = await API.get("/applications/my");
 
       // Extracting Job ID's to check which jobs user has already applied.
       const appliedJobsIds = response.data.map(app => app.job.id);

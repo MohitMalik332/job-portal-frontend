@@ -2,7 +2,7 @@ import { useState } from "react";
 import API from "../services/api";
 
 
-function Recruiter() {
+function PostJob() {
   const [job, setJob] = useState({
     title: "",
     description: "",
@@ -51,4 +51,4 @@ function Recruiter() {
   )
 }
 
-export default Recruiter;
+export default PostJob;

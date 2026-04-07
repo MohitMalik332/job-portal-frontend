@@ -4,9 +4,10 @@ import './App.css'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Jobs from './pages/Jobs'
-import Recruiter from './pages/Recruiter'
+import RecruiterDashboard from './pages/RecruiterDashboard'
 import MyApplications from './pages/MyApplications'
 import Navbar from './components/Navbar'
+import PostJob from './pages/PostJob'
 
 function App() {
 
@@ -18,8 +19,9 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='jobs' element={<Jobs />}/>
-        <Route path='/recruiter' element={<Recruiter />} />
+        <Route path='/recruiter' element={<RecruiterDashboard />} />
         <Route path='/my-applications' element={<MyApplications />} />
+        <Route path='post-job' element={<PostJob />} />
       </Routes>
     </BrowserRouter>
     </>
